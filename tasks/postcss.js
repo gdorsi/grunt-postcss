@@ -131,9 +131,11 @@ module.exports = function(grunt) {
 
                     tally.issues += warnings.length;
 
-                    warnings.forEach(function(msg) {
-                        grunt.log.error(msg.toString());
-                    });
+                    if (!options.skipWarnings) {
+                        warnings.forEach(function(msg) {
+                            grunt.log.error(msg.toString());
+                        });
+                    }
 
                     if (options.writeDest) {
                         grunt.file.write(dest, result.css);
